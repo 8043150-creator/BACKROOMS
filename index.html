@@ -1,194 +1,190 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>THE BACKROOMS</title>
 
 <style>
-* {
-    box-sizing: border-box;
+*{box-sizing:border-box}
+
+html,body{
+    margin:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#050505;
+    font-family:Arial,Helvetica,sans-serif;
+    color:#eee;
 }
 
-html, body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #050505;
-    color: white;
+body{
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
-body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.menu {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.background {
-    position: absolute;
-    inset: 0;
+.background{
+    position:fixed;
+    inset:0;
     background:
-        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.75)),
-        radial-gradient(circle at center, #655d22 0%, #211f0c 40%, #050505 100%);
+        radial-gradient(
+            ellipse at center,
+            rgba(177,164,67,.32),
+            rgba(0,0,0,.88) 75%
+        ),
+        #111;
 }
 
-.background::before {
-    content: "";
-    position: absolute;
-    inset: -100px;
-    opacity: .2;
-    background-image:
+.background:after{
+    content:"";
+    position:absolute;
+    inset:0;
+    opacity:.16;
+    background:
         repeating-linear-gradient(
             90deg,
-            transparent 0px,
+            transparent 0,
             transparent 80px,
             rgba(255,255,255,.08) 81px,
             transparent 82px
         ),
         repeating-linear-gradient(
             0deg,
-            transparent 0px,
+            transparent 0,
             transparent 80px,
-            rgba(255,255,255,.06) 81px,
+            rgba(255,255,255,.05) 81px,
             transparent 82px
         );
-    transform: perspective(500px) rotateX(10deg);
+    transform:scale(1.2);
 }
 
-.container {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    width: min(700px, 90%);
+.menu{
+    position:relative;
+    z-index:2;
+    width:min(900px,92%);
+    text-align:center;
 }
 
-.warning {
-    font-size: 13px;
-    letter-spacing: 6px;
-    color: #d9d37b;
-    margin-bottom: 20px;
-    text-transform: uppercase;
+.warning{
+    font-size:12px;
+    letter-spacing:7px;
+    color:#aaa05c;
+    margin-bottom:20px;
 }
 
-h1 {
-    margin: 0;
-    font-size: clamp(55px, 11vw, 120px);
-    letter-spacing: 15px;
-    font-weight: 900;
-    color: #e9e2a2;
+.logo{
+    font-size:clamp(55px,10vw,115px);
+    line-height:.9;
+    letter-spacing:15px;
+    font-weight:900;
+    color:#ddd28b;
     text-shadow:
-        0 0 10px #9f9748,
-        0 0 30px rgba(255,230,100,.25);
+        0 0 8px rgba(255,239,128,.5),
+        0 0 35px rgba(255,235,80,.15);
 }
 
-.subtitle {
-    margin-top: 10px;
-    color: #aaa;
-    letter-spacing: 5px;
-    font-size: 14px;
+.subtitle{
+    margin-top:25px;
+    color:#888;
+    font-size:13px;
+    letter-spacing:6px;
 }
 
-.buttons {
-    margin-top: 55px;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    align-items: center;
+.buttons{
+    margin-top:55px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
 }
 
-button {
-    width: 300px;
-    max-width: 90%;
-    padding: 17px 25px;
-    background: rgba(20,20,20,.8);
-    border: 1px solid #77734a;
-    color: #e9e2a2;
-    font-size: 17px;
-    letter-spacing: 3px;
-    cursor: pointer;
-    transition: .2s;
+button{
+    width:320px;
+    max-width:90vw;
+    padding:18px;
+    background:rgba(10,10,10,.75);
+    border:1px solid #77734e;
+    color:#d9d18d;
+    font-size:15px;
+    letter-spacing:4px;
+    cursor:pointer;
+    transition:.2s;
 }
 
-button:hover {
-    background: #e8df91;
-    color: #111;
-    box-shadow: 0 0 25px rgba(255,230,100,.3);
+button:hover{
+    background:#d8d08a;
+    color:#111;
+    box-shadow:0 0 30px rgba(230,220,110,.25);
 }
 
-.info {
-    margin-top: 45px;
-    font-size: 11px;
-    line-height: 2;
-    color: #777;
-    letter-spacing: 1px;
+.warningText{
+    margin:55px auto 0;
+    max-width:550px;
+    color:#555;
+    font-size:11px;
+    line-height:2;
 }
 
-.version {
-    position: absolute;
-    bottom: 15px;
-    right: 20px;
-    color: #444;
-    font-size: 10px;
+.version{
+    position:fixed;
+    bottom:15px;
+    right:20px;
+    color:#333;
+    font-size:10px;
 }
 </style>
 </head>
 
 <body>
 
+<div class="background"></div>
+
 <div class="menu">
 
-    <div class="background"></div>
+    <div class="warning">
+        ⚠ NO-CLIP DETECTED ⚠
+    </div>
 
-    <div class="container">
+    <div class="logo">
+        BACKROOMS
+    </div>
 
-        <div class="warning">
-            ⚠ DO NOT GET LOST ⚠
-        </div>
+    <div class="subtitle">
+        THERE IS NO WAY OUT
+    </div>
 
-        <h1>BACKROOMS</h1>
+    <div class="buttons">
 
-        <div class="subtitle">
-            THERE IS NO WAY OUT
-        </div>
+        <button onclick="startGame()">
+            ENTER LEVEL 0
+        </button>
 
-        <div class="buttons">
-            <button onclick="startGame()">ENTER THE BACKROOMS</button>
-            <button onclick="showControls()">CONTROLS</button>
-        </div>
-
-        <div class="info">
-            LEVEL 0 // THE LOBBY<br>
-            FIND THE EXIT // AVOID THE ENTITY
-        </div>
+        <button onclick="controls()">
+            CONTROLS
+        </button>
 
     </div>
 
-    <div class="version">
-        BACKROOMS // v1.0
+    <div class="warningText">
+        You have entered a place that should not exist.<br>
+        The walls repeat. The lights never stop buzzing.<br>
+        Something is moving somewhere behind you.
     </div>
 
 </div>
 
-<script>
+<div class="version">
+    BACKROOMS // PRE-ALPHA
+</div>
 
-function startGame() {
-    window.location.href = "game.html";
+<script>
+function startGame(){
+    window.location.href="game.html?level=0";
 }
 
-function showControls() {
+function controls(){
     alert(
 `CONTROLS
 
@@ -196,7 +192,7 @@ W A S D
 Move
 
 MOUSE
-Look around
+Look
 
 SHIFT
 Sprint
@@ -204,18 +200,26 @@ Sprint
 F
 Flashlight
 
+E
+Interact / Hide / Open
+
 ESC
 Release mouse
 
 OBJECTIVE
 
-Explore the Backrooms.
+Explore the level.
+Find keys.
+Open doors.
+Hide from the Entity.
 Find the exit.
-Don't let the entity find you.`
+
+WARNING:
+The Entity can hear you running.`
     );
 }
-
 </script>
 
 </body>
 </html>
+```
